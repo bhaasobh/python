@@ -26,6 +26,6 @@ class DataSummary:
             data = json.load(file)
             #print(data)
         for record in data['data']:
-            print('***************')
+            print('*************')
             for key,value in record.items():
                 print(key)
