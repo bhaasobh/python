@@ -27,10 +27,10 @@ if __name__ == "__main__":
         print("Exception: ", err)
     else:
         print("unexpected feature data")
-    DS.count("Country")
-    DS.mean("Happiness Score")
-    # print(DS.mean("Happiness Score"))
-    # print(DS.mode("Class"))
+    print(DS.mean("Happiness Score"))
+    print(DS.min("Happiness Score"))
+    print(DS.max("Happiness Score"))
+   # print(DS.mode("Class"))
     # print(DS.unique("Region"))
     #
     # try:

@@ -3,7 +3,6 @@ import csv ,os,json
 class DataSummary:
     def __init__(self,datafile: str,metafile: str):
             self.data_summary = list()
-            self.data_feature = list()
             if not datafile or not metafile:
                 raise ValueError("need to pass both params")
             try:
@@ -41,7 +40,7 @@ class DataSummary:
         else:
             if(item in self.csv_fields):
                 res = list()
-                for record in self.json_data['data']:
+                for record in self.data_summary:
                     try :
                         res.append(record[item])
                     except:
@@ -90,5 +89,29 @@ class DataSummary:
 
 
     def min(self,item):
+        res = 0;
+        all = list()
+        if (item in self.csv_fields):
+            for record in self.data_summary:
+                try:
+                    if record[item] != None:
+                        all.append(float(record[item]))
+                except:
+                    raise TypeError("Feature TypeError")
+        else:
+            raise Exception("Unknown Feature")
+        return min(all)
 
-        return 10
+    def max(self,item):
+        res = 0;
+        all = list()
+        if (item in self.csv_fields):
+            for record in self.data_summary:
+                try:
+                    if record[item] != None:
+                        all.append(float(record[item]))
+                except:
+                    raise TypeError("Feature TypeError")
+        else:
+            raise Exception("Unknown Feature")
+        return max(all)
