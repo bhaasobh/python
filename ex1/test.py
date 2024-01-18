@@ -12,22 +12,23 @@ if __name__ == "__main__":
 
 
     print(DS[3])
-    # print(DS["Country"])
-    #
-    # try:
-    #     DS['GDP']
-    # except Exception as err:
-    #     print("Exception: ", err)
-    # else:
-    #     print("unexpected feature GDP")
-    #
-    # try:
-    #     DS['data']
-    # except Exception as err:
-    #     print("Exception: ", err)
-    # else:
-    #     print("unexpected feature data")
-    #
+    print(DS["Country"])
+
+    try:
+        DS['GDP']
+    except Exception as err:
+        print("Exception: ", err)
+    else:
+        print("unexpected feature GDP")
+
+    try:
+        DS['data']
+    except Exception as err:
+        print("Exception: ", err)
+    else:
+        print("unexpected feature data")
+    DS.count("Country")
+    DS.mean("Happiness Score")
     # print(DS.mean("Happiness Score"))
     # print(DS.mode("Class"))
     # print(DS.unique("Region"))
