@@ -31,16 +31,18 @@ if __name__ == "__main__":
     print(DS.min("Happiness Score"))
     print(DS.max("Happiness Score"))
     print(DS.unique("Region"))
-   # print(DS.mode("Class"))
-    # print(DS.unique("Region"))
-    #
-    # try:
-    #     DS.min("Country")
-    # except Exception as err:
-    #     print("Exception: ", err)
-    # else:
-    #     print("unexpected function min for categorical feature")
-    #
-    #
-    # DS.to_csv("happiness.csv")
+    print(DS.mode("Region"))
+    print(DS.empty("Region"))
+    print(DS.mode("Class"))
+    print(DS.unique("Region"))
+
+    try:
+        DS.min("Country")
+    except Exception as err:
+        print("Exception: ", err)
+    else:
+        print("unexpected function min for categorical feature")
+
+
+    DS.to_csv("happiness.csv")
 

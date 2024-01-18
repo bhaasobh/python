@@ -117,15 +117,57 @@ class DataSummary:
         return max(all)
 
     def unique(self,item):
-
-        # initialize a null list
         unique_list = []
-        list = self[item]
-        # traverse for all elements
-        for x in list:
-            # check if exists in unique_list or not
-            if x not in unique_list and x != None:
-                unique_list.append(x)
-        # print list
-        unique_list.sort()
-        return unique_list
+        if (item in self.csv_fields):
+            list = self[item]
+            for x in list:
+                if x not in unique_list and x != None:
+                    unique_list.append(x)
+            unique_list.sort()
+            return unique_list
+        else :
+            raise Exception("Unknown Feature")
+
+    def mode(self,item):
+        counter = 0
+        res = []
+        if (item in self.csv_fields):
+            listt = self[item]
+            uniqueList = self.unique(item)
+            for record in listt:
+                if record in uniqueList:
+                    listt.remove(record)
+            for x in listt:
+                if x not in res and x != None:
+                    res.append(x)
+            res.sort()
+            return res
+        else :
+            raise Exception("Unknown Feature")
+
+    def empty(self,item):
+        listt = self[item]
+        count =0
+        for x in listt:
+            if x == None:
+                count = count+1
+        return count
+
+    def to_csv(self,filename,delimiter=','):
+        supported_delimiter=['.',':','|','-',';','#','*',',']
+        if(delimiter not in supported_delimiter):
+            delimiter = ','
+
+        features =self.csv_fields
+
+        with open(filename, mode='w', newline='') as csv_file:
+            csv_writer = csv.writer(csv_file, delimiter=delimiter)
+
+            csv_writer.writerow(features)
+
+            for record in self.data_summary:
+                values = [record.get(feature, '') for feature in features]
+                csv_writer.writerow(values)
+
+
+            print("excel saved")
