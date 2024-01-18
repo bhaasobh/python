@@ -1,3 +1,5 @@
+#name : Bahaa Sobh ID : 204657365
+
 import csv ,os,json
 
 class DataSummary:
@@ -7,14 +9,14 @@ class DataSummary:
                 raise ValueError("need to pass both params")
             try:
                 with open(datafile, 'r') as json_file:
-                    self.json_data = json.load(json_file)
+                    self.json_data = json.load(json_file) #reading the json file
             except FileNotFoundError:
                 raise ValueError(f"JSON file '{datafile}' not found.")
 
             try:
                 with open(metafile, 'r') as csv_file:
                     csv_reader = csv.DictReader(csv_file)
-                    self.csv_fields = csv_reader.fieldnames
+                    self.csv_fields = csv_reader.fieldnames #get the fields name from the excel
             except FileNotFoundError:
                 raise ValueError(f"CSV file '{metafile}' not found.")
 
@@ -28,8 +30,8 @@ class DataSummary:
 
                 self.data_summary.append(summary_record)
 
+    #DataAcsses returned a single record or list
     def DataAccess(self, item):
-
         if(isinstance(item,int)):
             res = dict()
             try:
@@ -51,6 +53,9 @@ class DataSummary:
 
     __getitem__ = DataAccess
 
+
+
+    #sum return the sum of the objects d1
     def sum(self,item):
         try:
             res = len(self[item])
@@ -168,6 +173,4 @@ class DataSummary:
             for record in self.data_summary:
                 values = [record.get(feature, '') for feature in features]
                 csv_writer.writerow(values)
-
-
             print("excel saved")

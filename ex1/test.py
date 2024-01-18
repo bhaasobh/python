@@ -1,4 +1,5 @@
-from data_summary import DataSummary 
+#name : Bahaa Sobh ID : 204657365
+from data_summary import DataSummary
 
 if __name__ == "__main__":
     try:
@@ -9,8 +10,6 @@ if __name__ == "__main__":
         print("unexpected DataSummary constructor")
 
     DS = DataSummary(datafile="happiness.json",metafile="happiness_meta.csv")
-
-
     print(DS[3])
     print(DS["Country"])
 
@@ -27,12 +26,8 @@ if __name__ == "__main__":
         print("Exception: ", err)
     else:
         print("unexpected feature data")
+
     print(DS.mean("Happiness Score"))
-    print(DS.min("Happiness Score"))
-    print(DS.max("Happiness Score"))
-    print(DS.unique("Region"))
-    print(DS.mode("Region"))
-    print(DS.empty("Region"))
     print(DS.mode("Class"))
     print(DS.unique("Region"))
 
@@ -45,4 +40,3 @@ if __name__ == "__main__":
 
 
     DS.to_csv("happiness.csv")
-
