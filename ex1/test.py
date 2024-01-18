@@ -30,6 +30,7 @@ if __name__ == "__main__":
     print(DS.mean("Happiness Score"))
     print(DS.min("Happiness Score"))
     print(DS.max("Happiness Score"))
+    print(DS.unique("Region"))
    # print(DS.mode("Class"))
     # print(DS.unique("Region"))
     #

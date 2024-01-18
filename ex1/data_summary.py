@@ -115,3 +115,17 @@ class DataSummary:
         else:
             raise Exception("Unknown Feature")
         return max(all)
+
+    def unique(self,item):
+
+        # initialize a null list
+        unique_list = []
+        list = self[item]
+        # traverse for all elements
+        for x in list:
+            # check if exists in unique_list or not
+            if x not in unique_list and x != None:
+                unique_list.append(x)
+        # print list
+        unique_list.sort()
+        return unique_list
