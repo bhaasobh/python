@@ -1,4 +1,5 @@
-from data_summary import DataSummary 
+#name : Bahaa Sobh ID : 204657365
+from data_summary import DataSummary
 
 if __name__ == "__main__":
     try:
@@ -39,4 +40,3 @@ if __name__ == "__main__":
 
 
     DS.to_csv("happiness.csv")
-
