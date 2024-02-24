@@ -32,8 +32,21 @@ data['DPI_w']= data['DPI_w'].replace([np.inf, -np.inf , np.nan], 0) #replace the
 # @title 5. Add a column that holds the ratio battery_power/talk_time and name it call_ratio.Do not leave NaN/Infinite values.
 data['call_ratio'] = data['battery_power']/data['talk_time']
 data['call_ratio']= data['call_ratio'].replace([np.inf, -np.inf , np.nan], 0)
-print(data)
+
 
 
 #6
 # @title 6. Change the memory column to hold the memory in GB instead of MB.
+data['memory'] = data['memory'] / 1024
+
+#7
+# @title 7. Include the output of the `describe()` function of the dataframe.
+data.describe()
+
+#8
+# @title 8. Convert the following features into categorical series in the Dataframe: speed,screen,cores
+data['speed'] = data['speed'].astype('category')
+data['screen'] = data['screen'].astype('category')
+data['cores'] = data['cores'].astype('category')
+
+print(data.head(10))
