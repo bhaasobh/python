@@ -49,4 +49,4 @@ data['speed'] = data['speed'].astype('category')
 data['screen'] = data['screen'].astype('category')
 data['cores'] = data['cores'].astype('category')
 
-print(data.head(10))
+print(data.head(100))
