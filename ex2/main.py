@@ -9,7 +9,7 @@ import pandas as pd
 #Task 1
 
 #1
-# @title Loading the data into a Pandas Dataframe.
+# @title 1. Loading the data into a Pandas Dataframe.
 mobile_price_csv= "mobile_price_1.csv"
 data = pd.read_csv(mobile_price_csv)
 
@@ -49,4 +49,33 @@ data['speed'] = data['speed'].astype('category')
 data['screen'] = data['screen'].astype('category')
 data['cores'] = data['cores'].astype('category')
 
-print(data.head(10))
+
+#Task 2
+
+#1
+# @title 1. How many phones do not have a camera at all (front or back)?
+phone_with_nan_Value = data[(data['f_camera'].isna()) & (data['camera'].isna())]
+print("Number of phones do not have a camera at all:", len(phone_with_nan_Value))
+
+#2
+# @title 1. How many phones do not have a camera at all (front or back)?
+# Filter the DataFrame based of who have single sim and have a camera with more than 12 pixel
+filter = data[(data['sim'] == 'Single') & ((data['camera'] > 12) | (data['f_camera'] > 12))]
+battery_power_AVG = filter['battery_power'].mean()
+print("Average battery power of phones whos have a single sim and have a camera with more than 12 pixel", battery_power_AVG)
+
+#3
+# @title  3.What is the ID and price of the most expensive phone that has no wifi, a touch screen and  weighs more than 145 grams?
+
+filter= data[(data['wifi'] == 'none') & (data['screen'] == 'Touch') & (data['mobile_wt'] > 145)]
+
+
+if len(filter) > 0:
+
+    most_expensive= filter.loc[filter['price'].idxmax()]
+    id = most_expensive['id']
+    price = most_expensive['price']
+
+    print("ID :", id ,'Price :',price)
+else:
+    print("No phone  that has no wifi, a touch screen and  weighs more than 145 grams")
