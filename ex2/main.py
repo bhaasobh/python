@@ -99,3 +99,5 @@ talk_time_maximum = selected_phones['talk_time'].sum()
 print(" phones with the maximun talk time:")
 print(selected_phones)
 print("\nMaximum total talk time achievable with these phones:", talk_time_maximum)
+=======
+print(data.head(100))
